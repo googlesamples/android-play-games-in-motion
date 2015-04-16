@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2015 Google Inc. All Rights Reserved.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <string name="app_name">Games in Motion</string>
+    <string name="action_settings">Settings</string>
+    <string name="example_action_clicked">Example action clicked</string>
+    <string name="notification_title">Enemy</string>
+    <string name="notification_content">An enemy appeared! What will you do?</string>
+    <string name="default_action_name">Action</string>
+    <string name="default_notification_title">Enemy!</string>
+    <string name="default_notification_content">An enemy appeared, what will you do?</string>
+    <string name="disconnection_notification_title">Disconnected.</string>
+    <string name="disconnection_notification_content">
+        Google client has been disconnected. Please make sure you have WiFi or cellular data
+        turned on.
+    </string>
+    <string name="game_name_text">Games in Motion</string>
+    <string name="game_instructions_text">
+        You are in the midst of a zombie apocalypse.  Your task is to evade as many zombies as
+        possible throughout the course of your run.\n\nPlease put on your headphones so you can
+        receive important instructions. A paired Android wear device is also recommended.
+    </string>
+    <string name="game_credits_text">
+        Created by Kate Aplin and Veronica Wharton, Summer 2014 EP Interns
+    </string>
+    <string name="start_button_ready">
+        Start!
+    </string>
+    <string name="start_button_not_connected">
+        Connecting to Google Fit…
+    </string>
+    <string name="select_mission_title">Select Mission</string>
+    <string name="select_mission_instructions_text">
+        Select your mission
+    </string>
+    <string name="select_mission_length_instructions_text">
+        How long will your mission be?
+    </string>
+    <string name="select_interval_length_instructions_text">
+        How long will your intervals be?
+    </string>
+    <string name="challenge_speed_select">
+        Slide to choose your challenge speed.
+    </string>
+    <string name="challenge_speed_detail_text">
+        Choose carefully! Your weapon will only charge when you are running at challenge pace.
+        \n\nYour mission will last 0 to 60 minutes, with an interval length of 1.5 minutes.
+    </string>
+    <string name="run_specification_title">Choose Speed</string>
+    <string name="run_specification_enter_button">Confirm Interval Speed</string>
+    <string name="challenge_speed_display">
+        %.2f minutes/mile
+    </string>
+    <string name="select_music_title">Select Music</string>
+    <string name="select_music">
+        Select music to play during your run.
+    </string>
+    <string name="select_music_details">
+        Put on your headphones to receive play instructions when the mission starts.\n\nIf you would
+        like to listen to music as you run, switch to the music app of your choice and play any
+        track you would like. Return here and select "I am ready!" when you are ready to begin the
+        mission.
+    </string>
+    <string name="start_mission_button">I am ready!</string>
+    <string name="start_mission_pressed">Registering sensors...</string>
+    <string name="placeholder_text">You are currently in a game. Sit tight.</string>
+    <string name="run_finish_text">You finished a run!</string>
+    <string name="fit_disconnected_text">Google Fit disconnected</string>
+    <string name="fictional_progress_text">Your progress:</string>
+    <string name="fitness_statistics_text">Your fitness:</string>
+    <string name="restart_button_text">Restart</string>
+    <string name="not_moving_speed">---\nmin/mile</string>
+    <string name="initial_percent_weapon_charge">0%</string>
+    <string name="initial_num_steps">0 steps</string>
+    <string name="initial_time">0:00</string>
+    <string name="label_challenge_pace_min_per_mile">Challenge pace (min/mile): </string>
+    <string name="fitness_stat_num_steps">Number of steps taken: %d</string>;
+    <string name="fitness_stat_num_intervals">Number of intervals completed: %d</string>
+
+    <string name="weapon_status_notification_title">% charged.</string>
+    <string name="weapon_status_notification_text">
+        Keep running at interval speed to charge your weapon!
+    </string>
+
+    <string name="log_message_minutes_per_mile"> minutes per mile.</string>
+    <string name="log_message_you_are_not_moving">You are not moving.</string>
+
+</resources>

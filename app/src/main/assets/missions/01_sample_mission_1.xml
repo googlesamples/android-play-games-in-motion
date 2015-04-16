@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2015 Google Inc. All Rights Reserved.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!-- A mission example consisting of a complete interaction. First, the player is welcomed to the
+game and given context and a challenge (spoken text moment.)  Then, the player runs for 1.5
+minutes (timer moment.)  Next, the player is notified that a zombie is now chasing them (spoken text
+moment) and must choose one of two ways to defeat the zombie (choice moment.)  Finally, the user
+learns the effectiveness of their choice (zombie defeated or not) (sfx moment and spoken text
+moment) and is notified that they have arrived at the base (spoken text moment.) -->
+<mission
+    start_id="start"
+    name="Complete Mission #1">
+    <moment
+        type="spoken_text"
+        id="start">
+        <next_moment id="timer_1"/>
+        <text_to_speak>
+            Welcome to Games In Motion!  The year is 2012, and the apocalypse is upon us in the form
+            of zombies.  The zombies have decided that your brain looks particularly tasty, and a
+            swarm is after you.  You will be pursued relentlessly until you reach the base, which is
+            approximately 3 minutes away by foot.  You will be notified when a zombie begins to
+            chase you, and you will have to react appropriately.  Keep an eye on your wrist gadget,
+            but don't run into any trees, or else the zombies will surely catch you.  Good luck!
+            Start running now!  You have at least a minute before a zombie will begin to chase you.
+        </text_to_speak>
+        <fictional_progress>Started a mission</fictional_progress>
+        <fictional_progress>Received instructions</fictional_progress>
+    </moment>
+
+    <moment
+        type="timer"
+        id="timer_1">
+        <next_moment id="zombie_chase_1"/>
+        <length_minutes>3</length_minutes>
+    </moment>
+
+    <moment
+        type="spoken_text"
+        id="zombie_chase_1">
+        <next_moment id="zombie_choice_1"/>
+        <text_to_speak>
+            You are now being chased!  Your options are as follows: Number 1. Act like a zombie in
+            order to blend in.  Number 2.  Throw an axe at the zombie.  Make your choice using your
+            mobile device.  Choose wisely.
+        </text_to_speak>
+        <fictional_progress>Encountered a zombie</fictional_progress>
+    </moment>
+
+    <moment
+        type="choice"
+        id="zombie_choice_1">
+        <timeout_length_minutes>0.5</timeout_length_minutes>
+        <description>What will you do?</description>
+        <default_choice id="choice_blend" />
+        <choice
+            id="fire">
+            <description>Fire!!!</description>
+            <next_moment id="zombie_axe_success"/>
+            <outcome
+                deplete_weapon="true"
+                increment_enemies="false"/>
+            <icon name="ic_fire"/>
+        </choice>
+        <choice
+            id="choice_axe">
+            <description>Axe.</description>
+            <next_moment id="sfx_zombie_axe"/>
+            <outcome
+                deplete_weapon="false"
+                increment_enemies="true"/>
+            <fictional_progress>Threw an axe.</fictional_progress>
+            <icon name="ic_axe"/>
+        </choice>
+        <choice
+            id="choice_blend">
+            <description>Blend.</description>
+            <next_moment id="sfx_zombie_blend"/>
+            <outcome
+                deplete_weapon="false"
+                increment_enemies="false"/>
+            <fictional_progress>Pretended to be a zombie</fictional_progress>
+            <icon name="ic_blend_zombie"/>
+        </choice>
+    </moment>
+
+    <moment
+        type="sfx"
+        id="sfx_zombie_axe">
+        <uri>android.resource://com.google.fpl.gim.examplegame/raw/axe</uri>
+        <next_moment id="zombie_axe_success"/>
+    </moment>
+
+    <moment
+        type="sfx"
+        id="sfx_zombie_blend">
+        <uri>android.resource://com.google.fpl.gim.examplegame/raw/brains</uri>
+        <next_moment id="zombie_blend_failure"/>
+    </moment>
+
+    <moment
+        type="spoken_text"
+        id="zombie_axe_success">
+        <next_moment id="final_fiction"/>
+        <text_to_speak>
+            You defeated the zombie!  Good thing because
+        </text_to_speak>
+        <fictional_progress>Killed the zombie!</fictional_progress>
+    </moment>
+
+    <moment
+        type="spoken_text"
+        id="zombie_blend_failure">
+        <next_moment id="final_fiction"/>
+        <text_to_speak>
+            You were caught!  That's okay because
+        </text_to_speak>
+        <fictional_progress>Failed at pretending to be a zombie.</fictional_progress>
+    </moment>
+
+    <moment
+        type="spoken_text"
+        id="final_fiction">
+        <!--<next_moment id="timer_1"/>-->
+        <text_to_speak>
+            You have arrived at the base.
+        </text_to_speak>
+        <fictional_progress>Arrived at the base.</fictional_progress>
+    </moment>
+</mission>

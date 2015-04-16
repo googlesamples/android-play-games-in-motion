@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2015 Google Inc. All Rights Reserved.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!-- A mission example consisting of 4 complete interactions. -->
+
+<mission
+    start_id="start"
+    name="Complete Mission #2">
+
+    <!-- Introductory moment explaining the scenario and basic game. -->
+    <moment
+        type="spoken_text"
+        id="start">
+        <next_moment id="timer_1"/>
+        <text_to_speak>
+            Hello Agent. Welcome to Games In Motion!  The year is 2012, and the apocalypse is upon
+            us in the form of zombies. Your task is to make it to our base. But the zombies have
+            decided that your brain looks particularly tasty, and a swarm is after you.  You will be
+            pursued relentlessly until you reach the base, which is approximately 20 minutes away by
+            foot. Keep an eye on your wrist gadget: you will be notified when a zombie begins to
+            chase you, and you will have to react appropriately. Don’t run into any trees, or else
+            the zombies will surely catch you. We’ve provided you with a simple super charger. Run
+            faster, and you’ll get a shot to use against the zombies. Good luck! Start running now!
+            You have at least a minute before a zombie will begin to chase you.
+        </text_to_speak>
+        <fictional_progress>Agent: Apocalypse</fictional_progress>
+    </moment>
+
+    <!-- Basic timer moment to space out events. -->
+    <moment
+        type="timer"
+        id="timer_1">
+        <next_moment id="zombie_chase_1"/>
+        <length_minutes>3.0</length_minutes>
+    </moment>
+
+    <!-- First choice/first zombie encounter. -->
+    <moment
+        type="spoken_text"
+        id="zombie_chase_1">
+        <next_moment id="zombie_choice_1"/>
+        <text_to_speak>
+            Watch out, there is a zombie behind you! Look at your wrist gadget and act quickly to
+            defeat the them. If you’ve got a shot, you can take it. Otherwise, you can act like a
+            zombie in order to blend in.  Or, throw an axe at the zombie. Choose wisely.
+        </text_to_speak>
+    </moment>
+
+    <moment
+        type="choice"
+        id="zombie_choice_1">
+        <timeout_length_minutes>0.5</timeout_length_minutes>
+        <description>Face the first zombie!</description>
+        <default_choice id="choice_blend" />
+        <choice
+            id="fire">
+            <description>Fire!!!</description>
+            <next_moment id="sfx_zombie_fire_1"/>
+            <outcome
+                deplete_weapon="true"
+                increment_enemies="false"/>
+            <icon name="ic_fire"/>
+        </choice>
+        <choice
+            id="choice_axe">
+            <description>Axe.</description>
+            <next_moment id="sfx_zombie_axe_1"/>
+            <outcome
+                deplete_weapon="false"
+                increment_enemies="true"/>
+            <icon name="ic_axe"/>
+        </choice>
+        <choice
+            id="choice_blend">
+            <description>Blend.</description>
+            <next_moment id="sfx_zombie_blend_1"/>
+            <outcome
+                deplete_weapon="false"
+                increment_enemies="false"/>
+            <icon name="ic_blend_zombie"/>
+        </choice>
+    </moment>
+
+    <!--Sound effects from choice 1-->
+    <moment
+        type="sfx"
+        id="sfx_zombie_fire_1">
+        <uri>android.resource://com.google.fpl.gim.examplegame/raw/fire</uri>
+        <!--TODO: make a fire sound effect-->
+        <next_moment id="zombie_fire_1_success"/>
+    </moment>
+
+    <moment
+        type="sfx"
+        id="sfx_zombie_axe_1">
+        <uri>android.resource://com.google.fpl.gim.examplegame/raw/axe</uri>
+        <next_moment id="zombie_axe_1_success"/>
+    </moment>
+
+    <moment
+        type="sfx"
+        id="sfx_zombie_blend_1">
+        <uri>android.resource://com.google.fpl.gim.examplegame/raw/brains</uri>
+        <next_moment id="zombie_blend_1_failure"/>
+    </moment>
+
+    <!-- Fiction from Choice 1 -->
+
+    <moment
+        type="spoken_text"
+        id="zombie_fire_1_success">
+        <text_to_speak>
+            Right in the eye! Nice work, agent. You just might have this zombie thing down.
+        </text_to_speak>
+        <next_moment id="timer_2_success"/>
+    </moment>
+    <moment
+        type="spoken_text"
+        id="zombie_axe_1_success">
+        <text_to_speak>
+            Hum. I did not expect that to work. Well, keep it up!
+        </text_to_speak>
+        <next_moment id="timer_2_success"/>
+    </moment>
+    <moment
+        type="spoken_text"
+        id="zombie_blend_1_failure">
+        <text_to_speak>
+            Why on earth did you think blending in would work? You barely got out of that! You’ll never be a great agent if you act like that.
+        </text_to_speak>
+        <next_moment id="timer_2_failure"/>
+    </moment>
+
+    <!-- Timer moment spacing out next event. -->
+
+    <moment
+        type="timer"
+        id="timer_2_success">
+        <length_minutes>3.0</length_minutes>
+        <next_moment id="prompt_2a"/>
+    </moment>
+
+    <moment
+        type="timer"
+        id="timer_2_failure">
+        <length_minutes>3.0</length_minutes>
+        <next_moment id="prompt_2b"/>
+    </moment>
+
+    <!-- Fiction readying next choice. -->
+
+    <moment
+        type="spoken_text"
+        id="prompt_2a">
+        <text_to_speak>
+            All right agent, I have a real task for you now.
+        </text_to_speak>
+        <next_moment id="prompt_2"/>
+    </moment>
+
+    <moment
+        type="spoken_text"
+        id="prompt_2b">
+        <text_to_speak>
+            How would you like a chance to redeem yourself?
+        </text_to_speak>
+        <next_moment id="prompt_2"/>
+    </moment>
+
+    <!-- Reconciliation - just one choice, regardless of first choice. -->
+
+    <moment
+        type="spoken_text"
+        id="prompt_2">
+        <text_to_speak>
+            There’s a fork in the road ahead. We have intel suggesting that a zombie mans the split.
+            One of the paths leads to a bunker, and that bunker has a hard drive we need you to get.
+            Don’t worry if you can’t find it right away - but know that the zombie may pursue if you
+            get their attention. If you take care of them quickly, they might have something on
+            their person. Or is it just a body since they are dead? Undead? Anyway, it will tell you
+            where to go.
+        </text_to_speak>
+        <next_moment id="choice_2"/>
+    </moment>
+
+    <!--Fork in the road choice.-->
+
+    <moment
+        type="choice"
+        id="choice_2">
+        <timeout_length_minutes>0.5</timeout_length_minutes>
+        <description>Fork in the road</description>
+        <default_choice id="choice_left_sneak" />
+        <choice
+            id="fire">
+            <description>Fire!!!</description>
+            <next_moment id="sfx_zombie_fire_2"/>
+            <outcome
+                deplete_weapon="true"
+                increment_enemies="false"/>
+            <icon name="ic_fire"/>
+        </choice>
+        <choice
+            id="choice_left_sneak">
+            <description>Left - sneak</description>
+            <next_moment id="sfx_sneak"/>
+            <outcome
+                deplete_weapon="false"
+                increment_enemies="true"/>
+            <icon name="ic_sneak"/>
+        </choice>
+        <choice
+            id="choice_right_sneak">
+            <description>Right - sneak</description>
+            <next_moment id="sfx_sneak"/>
+            <outcome
+                deplete_weapon="false"
+                increment_enemies="false"/>
+            <icon name="ic_sneak"/>
+        </choice>
+    </moment>
+
+    <!--Sound effects for fork in the road.-->
+
+    <moment
+        type="sfx"
+        id="sfx_zombie_fire_2">
+        <uri>android.resource://com.google.fpl.gim.examplegame/raw/fire</uri>
+        <next_moment id="zombie_fire_2_success"/>
+    </moment>
+
+    <moment
+        type="sfx"
+        id="sfx_sneak">
+        <uri>android.resource://com.google.fpl.gim.examplegame/raw/sneak</uri>
+        <!--TODO: make a sneak failure sfx-->
+        <next_moment id="zombie_sneak_failure"/>
+    </moment>
+
+    <!--Fictional following fork in the road choice-->
+
+    <moment
+        type="spoken_text"
+        id="zombie_fire_2_success">
+        <text_to_speak>
+            Well done. And I was right, of course. The zombie had a slip of paper saying to go left.
+            Head down the path. It will be obvious when you get there.
+        </text_to_speak>
+        <next_moment id="timer_3_success"/>
+    </moment>
+
+    <moment
+        type="spoken_text"
+        id="zombie_sneak_failure">
+        <text_to_speak>
+            You certainly have his attention now. How disappointing. And, and, what are you doing?
+            Do you really think jumping into the bramble will help you here? You're just making
+            noise. Perhaps if you're extraordinarily lucky, you can lose the zombie on your tail.
+            Sigh. Now I have to make contingency plans to recover that hard drive, all because of
+            your stupidity.
+        </text_to_speak>
+        <next_moment id="timer_3_failure"/>
+    </moment>
+
+    <!--Timer moments spacing out the next moment.-->
+
+    <moment
+        type="timer"
+        id="timer_3_success">
+        <length_minutes>3.0</length_minutes>
+        <next_moment id="prompt_3a"/>
+    </moment>
+
+    <moment
+        type="timer"
+        id="timer_3_failure">
+        <length_minutes>3.0</length_minutes>
+        <next_moment id="prompt_3b"/>
+    </moment>
+
+
+    <!-- Arrival to bunker -->
+
+    <moment
+        type="spoken_text"
+        id="prompt_3a">
+        <text_to_speak>
+            Right time, right location. I like your consistency, agent. Much better than the other
+            candidates we were investigating. You are doing so well that I apologize for the
+            pedantic explanation of your next task.
+        </text_to_speak>
+        <next_moment id="prompt_3"/>
+    </moment>
+
+    <moment
+        type="spoken_text"
+        id="prompt_3b">
+        <text_to_speak>
+            I am in shock at your luck. How did you lose that zombie? I swear they were following
+            you the entire time. And how did you find the bunker after all that? You do realize
+            that good luck does not a good agent make? But as long as you are here, you might as
+            well be useful.
+        </text_to_speak>
+        <next_moment id="prompt_3"/>
+    </moment>
+
+    <moment
+        type="spoken_text"
+        id="prompt_3">
+        <text_to_speak>
+            Go inside, go downstairs, turn left. 3 doors down will be a room labeled Animatrix.
+            You'll need to break the window, get in, and grab the blue external hard drive next to
+            the large computer. You will lose contact in there, but I will check in again once you
+            get out.
+        </text_to_speak>
+        <next_moment id="timer_4"/>
+    </moment>
+
+    <!-- Timer to space out. -->
+
+    <moment
+        type="timer"
+        id="timer_4">
+        <length_minutes>3.0</length_minutes>
+        <next_moment id="prompt_4"/>
+    </moment>
+
+    <!-- Get out of bunker. Horde! -->
+
+    <moment
+        type="spoken_text"
+        id="prompt_4">
+        <text_to_speak>
+            You got out.  By the way, there is a horde of zombies chasing you.  Why aren’t you
+            running now?  Didn’t I warn you about them?  We saw them on the radar nearly 10 minutes
+            ago.  Oh well.  Better late than never I suppose.  Start running now!
+        </text_to_speak>
+        <next_moment id="timer_5"/>
+    </moment>
+
+    <moment
+        type="timer"
+        id="timer_5">
+        <length_minutes>3.0</length_minutes>
+        <next_moment id="prompt_5"/>
+    </moment>
+
+    <moment
+        type="spoken_text"
+        id="prompt_5">
+        <text_to_speak>
+            You are at the base now, but the horde is still chasing you.  The horde is thinner now,
+            but we can’t let you in until you defeat them.  Our own safety is much more important
+            than yours, after all.  Deal with them. Or we will deal with you.
+        </text_to_speak>
+        <next_moment id="final_choice"/>
+    </moment>
+
+    <moment
+        type="choice"
+        id="final_choice">
+        <timeout_length_minutes>0.5</timeout_length_minutes>
+        <description>The horde is here.</description>
+        <default_choice id="join_them" />
+        <choice
+            id="fire">
+            <description>Fire!!!</description>
+            <next_moment id="sfx_zombie_fire_final"/>
+            <outcome
+                deplete_weapon="true"
+                increment_enemies="false"/>
+            <icon name="ic_fire"/>
+        </choice>
+        <choice
+            id="join_them">
+            <description>Join them.</description>
+            <next_moment id="sfx_join_them"/>
+            <outcome
+                deplete_weapon="false"
+                increment_enemies="false"/>
+            <icon name="ic_blend_zombie"/>
+        </choice>
+        <choice
+            id="jetpack">
+            <description>Jetpack!</description>
+            <next_moment id="sfx_jetpack"/>
+            <outcome
+                deplete_weapon="false"
+                increment_enemies="true"/>
+            <icon name="ic_jet_pack"/>
+        </choice>
+    </moment>
+
+    <moment
+        type="sfx"
+        id="sfx_zombie_fire_final">
+        <uri>android.resource://com.google.fpl.gim.examplegame/raw/fire</uri>
+        <next_moment id="zombie_fire_final_success"/>
+    </moment>
+
+    <moment
+        type="sfx"
+        id="stx_join_them">
+        <uri>android.resource://com.google.fpl.gim.examplegame/raw/brains</uri>
+        <next_moment id="zombie_join_them_failure"/>
+    </moment>
+
+    <moment
+        type="sfx"
+        id="sfx_jetpack">
+        <uri>android.resource://com.google.fpl.gim.examplegame/raw/jetpack</uri>
+        <next_moment id="zombie_jetpack_success"/>
+    </moment>
+
+    <moment
+        type="spoken_text"
+        id="zombie_fire_final_success">
+        <text_to_speak>
+            I suppose that firing like a maniac into a horde of zombies is one way to go.
+            Shockingly, you were successful.  I guess that means we have to let you in now.
+            Darn it.  Well, you completed the mission, so you are now an agent.  I begrudgingly
+            offer my congratulations.
+        </text_to_speak>
+        <next_moment id="mission_end"/>
+    </moment>
+
+    <moment
+        type="spoken_text"
+        id="zombie_join_them_failure">
+        <text_to_speak>
+            You have decided to join them?  How rude.  Needless to say, you did not complete the
+            mission, and your agent status has been revoked.  We might consider granting it to you
+            again, but not until you return for your next mission.  Farewell.
+        </text_to_speak>
+        <next_moment id="mission_end"/>
+    </moment>
+
+    <moment
+        type="spoken_text"
+        id="zombie_jetpack_success">
+        <text_to_speak>
+            Where did that jetpack come from? And how inconsiderate of you to leave us behind to
+            deal with the horde.  Needless to say, you did not complete the mission, and your agent
+            status has been revoked.  We might consider granting it to you again, but not until you
+            return for your next mission.  Farewell.
+        </text_to_speak>
+        <next_moment id="mission_end"/>
+    </moment>
+
+    <moment
+        type="spoken_text"
+        id="mission_end">
+        <text_to_speak>Mission end.</text_to_speak>
+    </moment>
+
+</mission>
+
+
+
+
+
+

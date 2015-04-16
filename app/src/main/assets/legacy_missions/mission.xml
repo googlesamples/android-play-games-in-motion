@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2015 Google Inc. All Rights Reserved.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!-- An example mission. -->
+<!-- Mission
+    start_id: The id signifying the starting Moment for this mission. -->
+<mission
+    start_id="start"
+    name="4 Moment Example - runs only one timer moment">
+    <!-- All Moments have:
+        type: The kind of Moment.
+        id: A String identifier unique to each Moment. -->
+    <!-- All Moments may optionally have:
+        fictional_progress: A string detailing a fictional achievement for the player.
+                            There may be multiple pieces of fictional progress. -->
+    <!-- TimerMoment -->
+    <moment
+        type="timer"
+        id="start">
+        <!-- TimerMoments have:
+            next_moment: The next Moment to progress to once timer is complete.
+            length_minutes: Time for this TimerMoment to run. -->
+        <length_minutes>0.25</length_minutes>
+        <fictional_progress>Created a mission.</fictional_progress>
+        <fictional_progress>Made a timer moment</fictional_progress>
+    </moment>
+    <!-- ChoiceMoment -->
+    <moment
+        type="choice"
+        id="choice_example" >
+        <!-- ChoiceMoments have:
+            timeout_length_minutes: The time to wait until the default choice is executed.
+            description: A text description of the choice to be made, displayed to user.
+            default_choice: The Choice to execute if the Choice times out.
+            choice(s): At least one Choice to be presented to the user. -->
+        <timeout_length_minutes>0.5</timeout_length_minutes>
+        <description>Example ChoiceMoment Description</description>
+        <default_choice id="choice_2" />
+        <!-- Choices have:
+            id: A String identifier unique to each choice. -->
+        <!-- There must be at least 2 Choices in each ChoiceMoment.  One of these 2 Choices must
+            have an id of "fire" to indicate that this Choice will appear only if the user's weapon
+            is charged. There can a maximum of 3 choices per ChoiceMoment because notifications can
+            have no more than 3 actions. -->
+        <choice
+            id="fire">
+            <!-- Choices contain:
+                next_moment: The Moment to progress to if this Choice is selected.
+                outcome: The Outcome containing consequences of this Choice.
+                description: Textual description of this option. -->
+            <!-- Choices may optionally contain:
+                fictional_progress: A string detailing a fictional achievement for the player.
+                            There may be multiple pieces of fictional progress. -->
+            <description>Example Choice Description 1</description>
+            <next_moment id="start"/>
+            <!-- Outcomes have:
+                deplete_weapon: A boolean whether the weapon is fired as a result of this option.
+                increment_enemies: A boolean whether an enemy is defeated as a result of this
+                    option. -->
+            <outcome
+                deplete_weapon="true"
+                increment_enemies="false"/>
+            <fictional_progress>Fired a weapon.</fictional_progress>
+            <icon name="ic_fire"/>
+        </choice>
+        <choice
+            id="choice_2">
+            <description>Example Choice Description 2</description>
+            <next_moment id="start"/>
+            <outcome
+                deplete_weapon="false"
+                increment_enemies="false"/>
+            <icon name="ic_fire"/>
+        </choice>
+        <choice
+            id="choice_3">
+            <description>Example Choice Description 2</description>
+            <next_moment id="start"/>
+            <outcome
+                deplete_weapon="false"
+                increment_enemies="false"/>
+            <icon name="ic_fire"/>
+        </choice>
+    </moment>
+    <!-- SfxMoment -->
+    <moment
+        type="sfx"
+        id="sfx1">
+        <!-- SfxMoments have:
+            next_moment: The next Moment to progress to once timer is complete.
+            uri: The URI path to a sound effect to play. -->
+        <next_moment id="start"/>
+        <uri>path/to/something</uri>
+    </moment>
+    <!-- SpokenTextMoment -->
+    <moment
+        type="spoken_text"
+        id="text1">
+        <!-- SpokenTextMoments have:
+            next_moment: The next Moment to progress to once timer is complete.
+            text_to_speak: The text to be spoken. -->
+        <next_moment id="start"/>
+        <text_to_speak>Hello!</text_to_speak>
+    </moment>
+</mission>

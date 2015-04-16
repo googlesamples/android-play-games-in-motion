@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright 2015 Google Inc. All Rights Reserved.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/layout_margin_bottom" >
+
+        <TextView
+            style="@style/AppTheme.TitleText"
+            android:text="@string/game_name_text"
+            android:id="@+id/game_name" />
+
+        <TextView
+            style="@style/AppTheme.DetailText"
+            android:text="@string/game_instructions_text"
+            android:id="@+id/game_instructions"
+            android:layout_below="@+id/game_name" />
+
+        <Button
+            style="@style/AppTheme.BigButton"
+            android:text="@string/start_button_not_connected"
+            android:id="@+id/start_button"
+            android:onClick="onStartButtonPressed"
+            android:enabled="false" />
+
+    </RelativeLayout>
+
+    <TextView
+        style="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/game_credits_text"
+        android:id="@+id/game_credits"
+        android:paddingRight="@dimen/large_horizontal_margin"
+        android:paddingLeft="@dimen/large_horizontal_margin"
+        android:paddingTop="@dimen/large_vertical_margin"
+        android:paddingBottom="@dimen/large_vertical_margin"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false"
+        android:textColor="@color/secondary_text_default_material_light" />
+
+</RelativeLayout>
