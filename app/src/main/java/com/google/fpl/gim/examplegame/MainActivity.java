@@ -68,6 +68,20 @@ public class MainActivity extends ActionBarActivity {
             }
             mMainService = ((MainService.MainBinder) binder).getService();
             mMainService.ConnectGoogleFitApiClient(MainActivity.this);
+
+            // Register Intent receivers after the service is bound; this ensures that the Activity
+            // is listening to intents sent from the service.
+            // Register the mReceiver with an intent filter for rendering requests.
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(ENABLE_BACK);
+            filter.addAction(MISSION_START);
+            filter.addAction(MISSION_END);
+            registerReceiver(mReceiver, filter);
+
+            // Render the mReceiver with an intent filter for displaying an updated num steps
+            filter = new IntentFilter();
+            filter.addAction(UPDATE_FITNESS_STATS);
+            registerReceiver(mReceiver, filter);
         }
 
         public void onServiceDisconnected(ComponentName className) {
@@ -282,18 +296,6 @@ public class MainActivity extends ActionBarActivity {
     protected void onStart() {
         Utils.logDebug(TAG, "onStart");
         super.onStart();
-
-        // Register the mReceiver with an intent filter for rendering requests.
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(ENABLE_BACK);
-        filter.addAction(MISSION_START);
-        filter.addAction(MISSION_END);
-        registerReceiver(mReceiver, filter);
-
-        // Render the mReceiver with an intent filter for displaying an updated num steps
-        filter = new IntentFilter();
-        filter.addAction(UPDATE_FITNESS_STATS);
-        registerReceiver(mReceiver, filter);
     }
 
     @Override
@@ -331,6 +333,10 @@ public class MainActivity extends ActionBarActivity {
     protected void onPause() {
         Utils.logDebug(TAG, "onPause");
         super.onPause();
+        // Unregister all broadcasts before unbinding service. These will be registered again once
+        // the onServiceConnected callback is called. This cannot be unregistered in the
+        // onServiceConnected callback as MainActivity might be paused at that point, and it will
+        // result in a crash.
         try {
             unregisterReceiver(mReceiver);
         } catch (IllegalArgumentException e) {

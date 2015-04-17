@@ -4,16 +4,20 @@ Games in Motion
 Games in Motion    {#games_in_motion_index}
 ===============
 
-[Games in Motion][] is a simple game that motivates you to run. It is developed
-entirely using [Android Studio][].
+[Games in Motion][] is a game that motivates people to run, walk and get fit. It
+is a sample game with a goal to demonstrate different key game technologies.
+
+It is developed entirely using [Android Studio][].
 
 ## Motivation
 
-[Games in Motion][] is a demonstration for several Android-specific
-technologies, including the [Google Fit][] API, the [Android Wear][] API, and a
-simple data-driven design mechanic. It is also compatible with
-[Material design][]. This sample shows how all these pieces can be put together
-in a fun context, while also giving players a good motivation to exercise.
+[Games in Motion][] demonstrates several Android-specific technologies,
+including the [Google Fit][] API, the [Android Wear][] API, and a simple
+data-driven design mechanism. [Games in Motion][] is also compatible with
+[Material design][] UX system.
+
+This sample shows how all these pieces can be put together in a fun context,
+while also giving players a good motivation to exercise.
 
 In addition, [fplutil][] is used to build the documentation of this project.
 
@@ -45,14 +49,14 @@ data authored in XML.
 
 [Games in Motion][] can be downloaded from:
    * [GitHub][] (source)
-   * [GitHub Releases Page](http://github.com/google/gamesinmotion/releases)
+   * [GitHub Releases Page](http://github.com/googlesamples/android-play-games-in-motion/releases)
      (source)
 
 **Important**: Games in Motion uses submodules to reference other components it
 depends upon, so download the source from [GitHub][] using:
 
 ~~~{.sh}
-    git clone --recursive https://github.com/google/gamesinmotion.git
+    git clone --recursive https://github.com/googlesamples/android-play-games-in-motion.git
 ~~~
 
 ## Feedback and Reporting Bugs
@@ -69,11 +73,11 @@ depends upon, so download the source from [GitHub][] using:
   [Android Text to Speech]: http://developer.android.com/reference/android/speech/tts/TextToSpeech.html
   [Android Wear]: https://developer.android.com/wear/index.html
   [fplutil]: http://google.github.io/fplutil/
-  [Games in Motion]: http://google.github.io/gamesinmotion/
-  [Games in Motion Issue Tracker]: http://github.com/google/gamesinmotion/issues
+  [Games in Motion]: http://github.com/googlesamples/android-play-games-in-motion
+  [Games in Motion Issue Tracker]: http://github.com/googlesamples/android-play-games-in-motion/issues
   [Google Fit]: https://developers.google.com/fit/
   [Google Play Games Services]: https://developer.android.com/google/play-services/games.html
-  [GitHub]: http://github.com/google/gamesinmotion
+  [GitHub]: http://github.com/googlesamples/android-play-games-in-motion
   [Material design]: http://www.google.com/design/spec/material-design/introduction.html
   [stackoverflow.com]: http://www.stackoverflow.com
 

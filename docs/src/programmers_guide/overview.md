@@ -3,11 +3,11 @@ Overview    {#games_in_motion_guide_overview}
 
 ## Downloading
 
-[Games in Motion][] can be downloaded from [GitHub](http://github.com/google/gamesinmotion)
-or the [releases page](http://github.com/google/gamesinmotion/releases).
+[Games in Motion][] can be downloaded from [GitHub](http://github.com/googlesamples/android-play-games-in-motion)
+or the [releases page](http://github.com/googlesamples/android-play-games-in-motion/releases).
 
 ~~~{.sh}
-    git clone --recursive https://github.com/google/gamesinmotion.git
+    git clone --recursive https://github.com/googlesamples/android-play-games-in-motion.git
 ~~~
 
 ## Subsystems
