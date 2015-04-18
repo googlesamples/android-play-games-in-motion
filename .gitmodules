@@ -1,0 +1,3 @@
+[submodule "dependencies/fplutil"]
+	path = dependencies/fplutil
+	url = http://github.com/google/fplutil.git
