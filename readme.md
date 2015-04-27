@@ -27,9 +27,24 @@ in a fun context, while also giving players a good motivation to exercise.
 
 ## Documentation
 
-Our online documentation provides documentation for
-[Build and Run Games in Motion][], and for a [Programmer's Guide][] that details
-the overall structure of the game and all of its subsystems.
+The documentation is include with the GitHub codebase. It is in the `docs`
+directory.
+
+Required libraries:
+    * Python 2.7
+    * [fplutil][] library
+
+[fplutil][] is referenced as a submodule from the [Games in Motion][]
+repository, so the download command referenced above will automatically download
+it as well.
+
+After all required libraries are downloaded, run:
+
+~~~{.sh}
+    ./docs/generate_docs.py
+~~~
+
+The generated documentation will be in `docs/html`.
 
 To contribute the this project see [CONTRIBUTING][]. The license file is at
 [LICENSE][].
@@ -39,6 +54,7 @@ To contribute the this project see [CONTRIBUTING][]. The license file is at
   [Android Studio]: http://developer.android.com/tools/studio/index.html
   [Android Wear]: https://developer.android.com/wear/index.html
   [Build and Run Games in Motion]: http://github.com/googlesamples/android-play-games-in-motiongames_in_motion_guide_building.html
+  [fplutil]: http://google.github.io/fplutil/
   [Games in Motion]: http://github.com/googlesamples/android-play-games-in-motion
   [Google Fit]: https://developers.google.com/fit/
   [Material design]: http://www.google.com/design/spec/material-design/introduction.html
