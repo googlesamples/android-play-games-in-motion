@@ -44,7 +44,7 @@ public class ChoiceMoment extends Moment {
     private static final String CHOICE_ID_KEY
             = "com.google.fpl.gim.examplegame.CHOICE_ID_KEY";
 
-    private static final String ICON_RESOURCE_FOLDER = "mipmap";
+    private static final String ICON_RESOURCE_FOLDER = "drawable";
     private static long[] VIBRATE_PATTERN = {0, 300, 100, 300, 100, 300};
 
     private ChoiceMomentData mData;

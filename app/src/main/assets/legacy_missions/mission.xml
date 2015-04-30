@@ -75,7 +75,7 @@
                 deplete_weapon="true"
                 increment_enemies="false"/>
             <fictional_progress>Fired a weapon.</fictional_progress>
-            <icon name="ic_fire"/>
+            <icon name="ic_fire_white"/>
         </choice>
         <choice
             id="choice_2">
@@ -84,7 +84,7 @@
             <outcome
                 deplete_weapon="false"
                 increment_enemies="false"/>
-            <icon name="ic_fire"/>
+            <icon name="ic_fire_white"/>
         </choice>
         <choice
             id="choice_3">
@@ -93,7 +93,7 @@
             <outcome
                 deplete_weapon="false"
                 increment_enemies="false"/>
-            <icon name="ic_fire"/>
+            <icon name="ic_fire_white"/>
         </choice>
     </moment>
     <!-- SfxMoment -->

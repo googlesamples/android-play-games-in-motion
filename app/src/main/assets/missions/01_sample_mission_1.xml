@@ -73,7 +73,7 @@ moment) and is notified that they have arrived at the base (spoken text moment.)
             <outcome
                 deplete_weapon="true"
                 increment_enemies="false"/>
-            <icon name="ic_fire"/>
+            <icon name="ic_fire_white"/>
         </choice>
         <choice
             id="choice_axe">
@@ -83,7 +83,7 @@ moment) and is notified that they have arrived at the base (spoken text moment.)
                 deplete_weapon="false"
                 increment_enemies="true"/>
             <fictional_progress>Threw an axe.</fictional_progress>
-            <icon name="ic_axe"/>
+            <icon name="ic_axe_white"/>
         </choice>
         <choice
             id="choice_blend">
@@ -93,7 +93,7 @@ moment) and is notified that they have arrived at the base (spoken text moment.)
                 deplete_weapon="false"
                 increment_enemies="false"/>
             <fictional_progress>Pretended to be a zombie</fictional_progress>
-            <icon name="ic_blend_zombie"/>
+            <icon name="ic_blend_zombie_white"/>
         </choice>
     </moment>
 

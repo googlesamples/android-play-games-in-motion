@@ -32,7 +32,7 @@
             <outcome
                 deplete_weapon="true"
                 increment_enemies="false"/>
-            <icon name="ic_fire"/>
+            <icon name="ic_fire_white"/>
         </choice>
         <choice
             id="choice_sling_shot">
@@ -41,7 +41,7 @@
             <outcome
                 deplete_weapon="false"
                 increment_enemies="false"/>
-            <icon name="ic_sling_shot"/>
+            <icon name="ic_sling_shot_white"/>
         </choice>
         <choice
             id="choice_smoke_bomb">
@@ -50,7 +50,7 @@
             <outcome
                 deplete_weapon="true"
                 increment_enemies="false"/>
-            <icon name="ic_smoke_bomb"/>
+            <icon name="ic_smoke_bomb_white"/>
         </choice>
     </moment>
     <moment
